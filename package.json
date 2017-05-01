@@ -10,5 +10,9 @@
     "test"
   ],
   "author": "Humberto Gomez",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-es2016": "^6.24.1",
+    "gulp-babel": "^6.1.2"
+  }
 }
