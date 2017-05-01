@@ -1,0 +1,14 @@
+{
+  "name": "code-challenge-new-relic",
+  "version": "1.0.0",
+  "description": "Code challenge by New Relic done by Humberto Gómez López (hoijof@gmail.com)",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Humberto Gomez",
+  "license": "ISC"
+}
