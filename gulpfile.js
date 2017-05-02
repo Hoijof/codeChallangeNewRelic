@@ -6,6 +6,15 @@ const browserify = require('browserify');
 const watchify = require('watchify');
 const babel = require('babelify');
 const copy = require('gulp-copy');
+const jasmine = require('gulp-jasmine');
+const Server = require('karma').Server;
+
+
+gulp.task('tdd', function (done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js'
+  }, done).start();
+});
 
 function compile (watch) {
   'use strict';
