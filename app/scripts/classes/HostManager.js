@@ -3,47 +3,51 @@ import { Host } from './Host';
 const HOST_DOESNT_EXIST = 'Host doesn\'t exist';
 
 const HostManager = {
-  init: () => {
+  init: function () {
     this.hosts = {};
     this.lastId = 0;
 
     return this;
   },
-  getTopAppsByHost: () => {
-    let result = {};
+  getTopAppsByHost: function () {
+    let result = {},
+      keys = Object.keys(this.hosts);
 
-    for (let host of this.hosts) {
-      result[host.name] = host.getTopAps();
+
+    for (let host of keys) {
+      result[host] = this.hosts[host].getTopAps();
     }
 
     return result;
   },
-  addAppToHosts: (app) => {
+  addAppToHosts: function (app) {
     let hosts = app.host;
 
     app.id = this.lastId++;
+    app.links = {};
 
     hosts.forEach((host) => {
+      app.links[host] = {nextApp: null};
       this.addAppToHost(app, host);
     });
   },
-  addAppToHost: (app, host) => {
+  addAppToHost: function (app, host) {
 
     if (this.hosts[host] === undefined) {
-      this.hosts[host] = Object.create(Host, {name: host});
-      this.hosts[host].init();
+      this.hosts[host] = Object.create(Host);
+      this.hosts[host].init(host);
     }
 
     this.hosts[host].addApp(app);
   },
-  removeAppFromHosts: (app) => {
-    let hosts = app.getHosts();
+  removeAppFromHosts: function (app) {
+    let hosts = app.host;
 
     hosts.forEach((host) => {
       this.removeAppFromHost(app, host);
     });
   },
-  removeAppFromHost: (app, host) => {
+  removeAppFromHost: function (app, host) {
     if (this.hosts[host] === undefined) {
       throw HOST_DOESNT_EXIST;
     }

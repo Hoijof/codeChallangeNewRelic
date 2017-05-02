@@ -1,17 +1,19 @@
-const NO_APPS_IN_HOST = 'No applications registered in the host';
+const NO_APPS_IN_HOST = 'No applications registered in the host',
+  TOP_RESULTS = 20;
 
 const Host = {
-  init: () => {
+  init: function (name) {
     this.firstApp = undefined;
+    this.name = name;
   },
-  addApp: (app) => {
+  addApp: function (app) {
     let currentApp = this.firstApp,
       previousApp = undefined;
 
     if (this.firstApp === undefined) {
       // No apps in the host
       this.firstApp = app;
-      app.nextApp = null;
+      app.links[this.name].nextApp = null;
       return;
     }
 
@@ -21,24 +23,29 @@ const Host = {
         // Found a fit
         if (previousApp === undefined) {
           // The app is going in first place
-          app.nextApp = this.firstApp;
-          this.firstApp = app.nextApp;
-        } else if (currentApp.nextApp === null) {
+          app.links[this.name].nextApp = this.firstApp;
+          this.firstApp = app;
+        } else if (currentApp.links[this.name].nextApp === null) {
           // The app is going in last place
-          currentApp.nextApp = app;
-          app.nextApp = null;
+          previousApp.links[this.name].nextApp = app;
+          app.links[this.name].nextApp = currentApp;
         } else {
           // Standard case
-          previousApp.nextApp = app;
-          app.nextApp = currentApp;
+          previousApp.links[this.name].nextApp = app;
+          app.links[this.name].nextApp = currentApp;
         }
+
+        return;
       }
 
       previousApp = currentApp;
-      currentApp = currentApp.nextApp;
+      currentApp = currentApp.links[this.name].nextApp;
     }
+
+    previousApp.links[this.name].nextApp = app;
+    app.links[this.name].nextApp = null;
   },
-  removeApp: (app) => {
+  removeApp: function (app) {
     let currentApp = this.firstApp,
       previousApp = undefined;
 
@@ -52,25 +59,25 @@ const Host = {
         // found the app
         if (previousApp === undefined) {
           // The app is the first app
-          this.firstApp = currentApp.nextApp;
+          this.firstApp = currentApp.links[this.name].nextApp;
         } else {
-          previousApp.nextApp = currentApp.nextApp;
+          previousApp.links[this.name].nextApp = currentApp.links[this.name].nextApp;
         }
       }
 
       previousApp = currentApp;
-      currentApp = currentApp.nextApp;
+      currentApp = currentApp.links[this.name].nextApp;
     }
 
   },
-  getTopAps: () => {
+  getTopAps: function () {
     let result = [],
       currentApp = this.firstApp;
 
     for (let i = 0; i < TOP_RESULTS; i++) {
       if (currentApp === null) break;
       result.push(currentApp);
-      currentApp = currentApp.nextApp();
+      currentApp = currentApp.links[this.name].nextApp;
     }
 
     return result;
