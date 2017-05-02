@@ -70,7 +70,7 @@ const Host = {
     }
 
   },
-  getTopAps: function () {
+  getTopApps: function () {
     let result = [],
       currentApp = this.firstApp;
 

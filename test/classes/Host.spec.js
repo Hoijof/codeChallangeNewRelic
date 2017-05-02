@@ -25,4 +25,63 @@ describe('Host Prototype', function () {
     expect(this.host.firstApp).toEqual(app);
   });
 
+  it('should add two apps and order them', function () {
+    let app = fakeData[1];
+
+    app.id = 1;
+    app.links = {};
+    app.links[this.host.name] = {nextApp: null};
+
+    this.host.addApp(app);
+
+    let app2 = fakeData[0];
+
+    app2.id = 0;
+    app2.links = {};
+    app2.links[this.host.name] = {nextApp: null};
+
+    this.host.addApp(app2);
+
+    expect(this.host.firstApp).toEqual(app2);
+    expect(this.host.firstApp.links[this.host.name].nextApp).toEqual(app);
+  });
+
+  it('should remove an app succesfully', function () {
+    let app = fakeData[1];
+
+    app.id = 1;
+    app.links = {};
+    app.links[this.host.name] = {nextApp: null};
+
+    this.host.addApp(app);
+
+    expect(this.host.firstApp).toEqual(app);
+
+    this.host.removeApp(app);
+
+    expect(this.host.firstApp).toEqual(null);
+  });
+
+  it('should return top apps', function () {
+    let app = fakeData[1];
+
+    app.id = 1;
+    app.links = {};
+    app.links[this.host.name] = {nextApp: null};
+
+    this.host.addApp(app);
+
+    let app2 = fakeData[0];
+
+    app2.id = 0;
+    app2.links = {};
+    app2.links[this.host.name] = {nextApp: null};
+
+    this.host.addApp(app2);
+
+    let result = this.host.getTopApps();
+
+    expect(result.length).toBe(2);
+    expect(result).toEqual([app2, app]);
+  });
 });

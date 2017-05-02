@@ -15,7 +15,7 @@ const HostManager = {
 
 
     for (let host of keys) {
-      result[host] = this.hosts[host].getTopAps();
+      result[host] = this.hosts[host].getTopApps();
     }
 
     return result;
