@@ -1,11 +1,24 @@
 const NO_APPS_IN_HOST = 'No applications registered in the host',
   TOP_RESULTS = 20;
 
+/**
+ This Prototype will handle all the Host logic. It will add methods in order to add/remove apps
+ from the host in a sorted way. It uses a pointer structure, having a link to the first app
+ (the highest) and then that app having a link to the next one, until null is found.
+ */
 const Host = {
+  /**
+   Initialize the scope
+   @param name
+   */
   init: function (name) {
     this.firstApp = undefined;
     this.name = name;
   },
+  /**
+   Adds an app to the pointer structure, keeping the structure sorted.
+   @param app
+   */
   addApp: function (app) {
     let currentApp = this.firstApp,
       previousApp = undefined;
@@ -45,6 +58,10 @@ const Host = {
     previousApp.links[this.name].nextApp = app;
     app.links[this.name].nextApp = null;
   },
+  /**
+   Removes an app from the pointer structure, keeping the structure sorted.
+   @param app
+   */
   removeApp: function (app) {
     let currentApp = this.firstApp,
       previousApp = undefined;
@@ -70,6 +87,11 @@ const Host = {
     }
 
   },
+  /**
+   Get the N top apps of this host sorted by apdex
+   @param appsPerHost specifies the number of apps to return
+   @returns {Array}
+   */
   getTopApps: function (appsPerHost = TOP_RESULTS) {
     let result = [],
       currentApp = this.firstApp;

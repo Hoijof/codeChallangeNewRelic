@@ -4,8 +4,12 @@ import { injector } from './services/injector';
 
 const hostManager = Object.create(HostManager).init(),
   mainContainer = document.getElementById('mainContainer'),
+  overlay = document.getElementById('overlay'),
   contentDiv = document.getElementById('content');
 
+/**
+ Initializes the app
+ */
 function init () {
   initialLoader.load(hostManager);
 
@@ -18,6 +22,9 @@ function init () {
   }
 }
 
+/**
+ Adds all the DOM related events
+ */
 function addListeners () {
   document.getElementById('changeView').addEventListener('click', function (e) {
     if (mainContainer.classList.contains('list')) {
@@ -39,5 +46,8 @@ function addListeners () {
   });
 }
 
+
 addListeners();
 init();
+// Since our algorithm is synchronous it's okay to do it this way
+overlay.style.display = 'none';

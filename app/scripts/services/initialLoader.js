@@ -1,5 +1,8 @@
 import { default as data } from '../../data/host-app-data.json';
 
+/**
+ This Prototype will load the data from the json
+ */
 const initialLoader = {
   load: (hostManager) => {
     const startTime = Date.now();

@@ -8,7 +8,17 @@ const APP_TEMPLATE = '<div data-release-date="%%releaseNumber%%" class="metric">
   '<div class="name">%%appName%%</div>' +
   '</div>';
 
+/**
+ This Prototype will handle all the HTML manipulation. It provides a template system where user can
+ inject variables to the HTML template using an object.
+ */
 const injector = {
+  /**
+   Creates a String containing the HTML of a HOST_TEMPLATE with its configuration
+   @param host
+   @param apps
+   @returns {String}
+   */
   createHost: (host, apps) => {
     let appsTemplates = [],
       hostConfig = {
@@ -25,6 +35,11 @@ const injector = {
 
     return injector.inject(HOST_TEMPLATE, hostConfig);
   },
+  /**
+   Creates a String containing the HTML of a APP_TEMPLATE with its configuration
+   @param app
+   @returns {String}
+   */
   createApp: (app) => {
     let appConfig = {
       releaseNumber: app.version,
@@ -34,6 +49,12 @@ const injector = {
 
     return injector.inject(APP_TEMPLATE, appConfig);
   },
+  /**
+   Creates a String with the variables parsed into it
+   @param template
+   @param values
+   @returns {String}
+   */
   inject: (template, values) => {
     for (let key in values) {
       template = template.replace('%%' + key + '%%', values[key]);
