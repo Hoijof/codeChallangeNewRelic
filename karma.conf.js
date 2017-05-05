@@ -5,14 +5,16 @@ module.exports = function (config) {
     frameworks: ['browserify', 'jasmine'],
 
     files: [
-      'app/**/*.js',
+      'app/scripts/classes/*.js',
+      'app/scripts/services/*.js',
       'test/**/*.js'
     ],
 
     exclude: [],
 
     preprocessors: {
-      'app/**/*.js': ['browserify'],
+      'app/scripts/classes/*.js': ['browserify'],
+      'app/scripts/services/*.js': ['browserify'],
       'test/**/*.spec.js': ['browserify']
     },
 

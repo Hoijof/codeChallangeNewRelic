@@ -1,3 +1,8 @@
+.body {
+    margin: 0;
+    padding: 0;
+}
+
 .mainContainer {
     width: 810px;
     padding: 50px 15px 15px 15px;
@@ -38,10 +43,22 @@
     text-overflow: ellipsis;
 }
 
+.mainContainer.list .appHeader .user {
+    width: 335px;
+}
+
 .appHeader .viewSwitcher {
     margin-left: 30px;
     margin-top: 18px;
     font-size: 13px;
+}
+
+.appHeader .viewSwitcher:after {
+    content: 'Show as list'
+}
+
+.mainContainer.list .appHeader .viewSwitcher:after {
+    content: 'Show as an awesome grid'
 }
 
 .appHeader .viewSwitcher input[type="checkbox"] {
@@ -63,6 +80,10 @@
     display: grid;
 }
 
+.mainContainer.list .hostMetrics {
+    width: 720px;
+}
+
 .hostMetrics header {
     color: #000000;
     font-size: 16px;
@@ -73,6 +94,7 @@
 
 .hostMetrics .metric {
     width: 100%;
+    margin-bottom: 15px;
 }
 
 .hostMetrics .metric .score {
@@ -82,6 +104,10 @@
     font-weight: bold;
     line-height: 19px;
     display: inline-block;
+}
+
+.mainContainer.list .hostMetrics .metric .name {
+    width: 680px;
 }
 
 .hostMetrics .metric .name {

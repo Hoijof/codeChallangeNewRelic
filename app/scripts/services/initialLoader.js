@@ -8,7 +8,7 @@ const initialLoader = {
     }
     const endTime = Date.now();
 
-    document.write('Load Time = ' + (endTime - startTime) / 1000 + 's');
+    console.log('Load Time = ' + (endTime - startTime) / 1000 + 's');
   }
 };
 
