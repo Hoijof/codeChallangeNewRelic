@@ -70,11 +70,11 @@ const Host = {
     }
 
   },
-  getTopApps: function () {
+  getTopApps: function (appsPerHost = TOP_RESULTS) {
     let result = [],
       currentApp = this.firstApp;
 
-    for (let i = 0; i < TOP_RESULTS; i++) {
+    for (let i = 0; i < appsPerHost; i++) {
       if (currentApp === null) break;
       result.push(currentApp);
       currentApp = currentApp.links[this.name].nextApp;

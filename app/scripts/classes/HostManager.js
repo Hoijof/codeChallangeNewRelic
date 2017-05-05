@@ -9,13 +9,16 @@ const HostManager = {
 
     return this;
   },
-  getTopAppsByHost: function () {
+  getTopAppsByHost: function (hostName) {
+    return this.hosts[hostName].getTopApps();
+  },
+  getTopApps: function (appsPerHost) {
     let result = {},
       keys = Object.keys(this.hosts);
 
 
     for (let host of keys) {
-      result[host] = this.hosts[host].getTopApps();
+      result[host] = this.hosts[host].getTopApps(appsPerHost);
     }
 
     return result;
