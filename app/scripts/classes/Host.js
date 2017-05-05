@@ -66,7 +66,7 @@ const Host = {
     let currentApp = this.firstApp,
       previousApp = undefined;
 
-    if (this.firstApp === undefined) {
+    if (this.firstApp === undefined || this.firstApp === null) {
       throw NO_APPS_IN_HOST;
     }
 
@@ -74,12 +74,13 @@ const Host = {
     while (currentApp !== null) {
       if (currentApp.id === app.id) {
         // found the app
-        if (previousApp === undefined) {
+        if (previousApp === undefined || previousApp === null) {
           // The app is the first app
           this.firstApp = currentApp.links[this.name].nextApp;
         } else {
           previousApp.links[this.name].nextApp = currentApp.links[this.name].nextApp;
         }
+        break;
       }
 
       previousApp = currentApp;

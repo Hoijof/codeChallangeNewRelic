@@ -15,7 +15,7 @@ module.exports = function (config) {
     preprocessors: {
       'app/scripts/classes/*.js': ['browserify'],
       'app/scripts/services/*.js': ['browserify'],
-      'test/**/*.spec.js': ['browserify']
+      'test/**/*.js': ['browserify']
     },
 
     browserify: {
