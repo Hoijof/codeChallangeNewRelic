@@ -23,7 +23,7 @@ gulp.task('test', function (done) {
   }, done).start();
 });
 
-gulp.task('build', () => {
+gulp.task('buildSimple', () => {
   return compile();
 });
 gulp.task('watch', () => {
@@ -34,6 +34,7 @@ gulp.task('copyStatics', () => {
 });
 
 gulp.task('default', ['watch', 'copyStatics']);
+gulp.task('build', ['buildSimple', 'copyStatics']);
 
 function compile (watch) {
   'use strict';
