@@ -16,6 +16,25 @@ gulp.task('tdd', function (done) {
   }, done).start();
 });
 
+gulp.task('test', function (done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
+});
+
+gulp.task('build', () => {
+  return compile();
+});
+gulp.task('watch', () => {
+  return watch();
+});
+gulp.task('copyStatics', () => {
+  return copyStatics();
+});
+
+gulp.task('default', ['watch', 'copyStatics']);
+
 function compile (watch) {
   'use strict';
 
@@ -56,16 +75,3 @@ function copyStatics () {
     prefix: 1
   }));
 }
-
-gulp.task('build', () => {
-  return compile();
-});
-gulp.task('watch', () => {
-  return watch();
-});
-gulp.task('copyStatics', () => {
-  return copyStatics();
-});
-
-
-gulp.task('default', ['watch', 'copyStatics']);

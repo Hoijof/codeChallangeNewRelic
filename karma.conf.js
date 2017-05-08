@@ -19,10 +19,11 @@ module.exports = function (config) {
     },
 
     browserify: {
-      debug: true,
+      debug: false,
       transform: [['babelify', {presets: ['es2015']}]]
-    }
+    },
 
+    browsers : ['Chrome', 'Firefox', 'Opera', 'Safari']
     // define reporters, port, logLevel, browsers etc.
   });
 };

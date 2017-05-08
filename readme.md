@@ -18,40 +18,31 @@ npm i gulp -g
 
 A step by step series of examples that tell you have to get a development env running
 
-Say what the step will be
+Install NPM dependencies
 
 ```
-Give the example
+npm i
 ```
 
-And repeat
+Run the build command with gulp
 
 ```
-until finished
+gulp build
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
-
-npm test
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+Have in mind that the browsers used in this tests are: Chrome, Firefox, Opera and Safari. You should launch this tests
+in a mac with all this browsers in order to obtain optimal results.
+````
+gulp test
+````
 
 ## Built With
 
-* Vanilla JS
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+* Vanilla JS 
 
 ## Authors
 
-* **Humberto Gómez**
+* **Humberto Gómez** (hoijof@gmail.com)
