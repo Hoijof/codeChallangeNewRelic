@@ -2,10 +2,6 @@
 
 Code challenge by New Relic done by Humberto Gómez López (hoijof@gmail.com)
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 
 Gulp
@@ -15,8 +11,6 @@ npm i gulp -g
 ```
 
 ### Installing
-
-A step by step series of examples that tell you have to get a development env running
 
 Install NPM dependencies
 
@@ -30,7 +24,7 @@ Run the build command with gulp
 gulp build
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+The output will be saved in the folder 'build'
 
 ## Running the tests
 Have in mind that the browsers used in this tests are: Chrome, Firefox, Opera and Safari. You should launch this tests
