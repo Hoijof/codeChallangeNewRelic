@@ -1,4 +1,3 @@
-
 /**
  This Prototype will load the data from the json
  */

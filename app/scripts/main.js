@@ -3,10 +3,20 @@ import { initialLoader } from './services/initialLoader';
 import { injector } from './services/injector';
 import { default as data } from '../data/host-app-data.json';
 
+const LIST_CLASS = 'list',
+  TEXT_RELEASE_NUMBER = 'Release number: ';
+
 const hostManager = Object.create(HostManager).init(),
   mainContainer = document.getElementById('mainContainer'),
   overlay = document.getElementById('overlay'),
   contentDiv = document.getElementById('content');
+
+
+addListeners();
+init();
+// Since our algorithm is synchronous it's okay to do it this way
+overlay.style.display = 'none';
+
 
 /**
  Initializes the app
@@ -28,10 +38,10 @@ function init () {
  */
 function addListeners () {
   document.getElementById('changeView').addEventListener('click', function (e) {
-    if (mainContainer.classList.contains('list')) {
-      mainContainer.classList.remove('list');
+    if (mainContainer.classList.contains(LIST_CLASS)) {
+      mainContainer.classList.remove(LIST_CLASS);
     } else {
-      mainContainer.classList.add('list');
+      mainContainer.classList.add(LIST_CLASS);
     }
   });
 
@@ -41,14 +51,9 @@ function addListeners () {
 
       let elem = e.target.getAttribute('data-release-date') === null ? e.target.parentNode : e.target;
 
-      alert('Release number: ' + elem.getAttribute('data-release-date'));
+      alert(TEXT_RELEASE_NUMBER + elem.getAttribute('data-release-date'));
 
     }
   });
 }
 
-
-addListeners();
-init();
-// Since our algorithm is synchronous it's okay to do it this way
-overlay.style.display = 'none';
