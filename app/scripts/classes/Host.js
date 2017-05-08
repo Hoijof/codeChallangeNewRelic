@@ -31,7 +31,7 @@ const Host = {
     }
 
     // We look for a fit for the app
-    while (currentApp !== null) {
+    while (currentApp !== null && currentApp !== undefined) {
       if (app.apdex >= currentApp.apdex) {
         // Found a fit
         if (previousApp === undefined) {

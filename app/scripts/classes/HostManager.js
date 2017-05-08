@@ -92,6 +92,10 @@ const HostManager = {
     }
 
     this.hosts[host].removeApp(app);
+
+    if (this.hosts[host].firstApp === undefined || this.hosts[host].firstApp === null) {
+      delete this.hosts[host];
+    }
   }
 };
 
