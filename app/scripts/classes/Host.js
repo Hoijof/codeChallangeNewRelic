@@ -5,6 +5,9 @@ const NO_APPS_IN_HOST = 'No applications registered in the host',
  This Prototype will handle all the Host logic. It will add methods in order to add/remove apps
  from the host in a sorted way. It uses a pointer structure, having a link to the first app
  (the highest) and then that app having a link to the next one, until null is found.
+
+ Insertion algorithm has a cost of O(N) since in the worst case it will have to visit all the elements
+ in the linked list for a given host.
  */
 const Host = {
   /**
