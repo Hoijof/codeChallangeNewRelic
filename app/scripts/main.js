@@ -1,6 +1,7 @@
 import { HostManager } from './classes/HostManager';
 import { initialLoader } from './services/initialLoader';
 import { injector } from './services/injector';
+import { default as data } from '../data/host-app-data.json';
 
 const hostManager = Object.create(HostManager).init(),
   mainContainer = document.getElementById('mainContainer'),
@@ -11,7 +12,7 @@ const hostManager = Object.create(HostManager).init(),
  Initializes the app
  */
 function init () {
-  initialLoader.load(hostManager);
+  initialLoader.load(hostManager, data);
 
   let result = hostManager.getTopApps(5);
 

@@ -48,6 +48,8 @@ const HostManager = {
   addAppToHosts: function (app) {
     let hosts = app.host;
 
+    if (hosts === undefined) return;
+
     app.id = this.lastId++;
     app.links = {};
 

@@ -1,17 +1,19 @@
-import { default as data } from '../../data/host-app-data.json';
 
 /**
  This Prototype will load the data from the json
  */
 const initialLoader = {
-  load: (hostManager) => {
+  load: (hostManager, data, debug = false) => {
     const startTime = Date.now();
-    for (let app in data) {
-      hostManager.addAppToHosts(data[app]);
-    }
-    const endTime = Date.now();
+    data.forEach(function (app) {
 
-    console.log('Load Time = ' + (endTime - startTime) / 1000 + 's');
+      hostManager.addAppToHosts(app);
+    });
+
+    if (debug === true) {
+      let endTime = Date.now();
+      console.log('Load Time = ' + (endTime - startTime) / 1000 + 's');
+    }
   }
 };
 
